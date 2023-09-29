@@ -1,0 +1,22 @@
+{% extends 'pizza/base.html' %}
+{% block 'body' %}
+
+<h1>order pizza</h1>
+  {{ note }}
+  {% if created_pizza_pk %}
+<a href = "{% url 'edit' created_pizza_pk %}">edit order</a>
+{% endif %}
+<form action="{% url 'order' %}" method="post">
+    {% csrf_token %}
+      {{ pizzaform }}
+    <input type="submit" value="order pizza">
+
+</form>
+
+<form action="{% url 'pizzas' %}" method="get">
+
+      {{ pizza_form}}
+    <input type="submit" value="order pizza">
+
+</form>
+{% endblock %}
